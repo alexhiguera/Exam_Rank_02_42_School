@@ -10,33 +10,45 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <stdio.h>
-#include <stdlib.h> */
+#include <stdlib.h>
 
-int     *ft_range(int start, int end)
+int	*ft_range(int start, int end)
 {
 	int	*result;
-	int		i;
-	int		len;
+	int	i;
+	int	len;
 
+	if (start <= end)
+		len = end - start + 1;
+	else
+		len = start - end + 1;
+	result = (int *)malloc(sizeof(int) * len);
+	if (result == NULL)
+		return (NULL);
 	i = 0;
-	len = abs(start - end + 1);
-	result = (int *)malloc(len);
 	while (i < len)
 	{
 		if (start <= end)
-			result[i++] = start++;
-		else if (start >= end)
-			result[i++] = start--;
+			result[i] = start + i;
+		else
+			result[i] = start - i;
+		i++;
 	}
-	return(result);
+	return (result);
 }
-/* 
-int	main(int argc, char **argv)
+/*
+#include <stdio.h>
+
+int	main(void)
 {
-	if (argc == 3)
-		printf("%ls", ft_range(atoi(argv[1]), atoi(argv[2])));
+	int	*tab;
+	int	i;
+
+	tab = ft_range(0, -3);
+	i = 0;
+	while (i < 4)
+		printf("%d ", tab[i++]);
 	printf("\n");
-	return(0);
+	return (0);
 }
  */

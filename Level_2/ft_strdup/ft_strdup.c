@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <stdio.h>
-#include <stdlib.h> */
+#include <stdlib.h>
 
 int	ft_strlen(char *src)
 {
@@ -30,7 +29,7 @@ char	*ft_strdup(char *src)
 	int		i;
 
 	len = ft_strlen(src);
-	dup = (char *)malloc((len + 1) * sizeof(char *));
+	dup = (char *)malloc((len + 1) * sizeof(char));
 	i = 0;
 	while (src[i] != '\0')
 	{

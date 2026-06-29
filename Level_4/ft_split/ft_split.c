@@ -12,14 +12,43 @@
 
 #include <stdlib.h>
 
-int	ft_strlen(char *str)
+int	is_sep(char c)
 {
-	int	len;
+	return (c == ' ' || c == '\t' || c == '\n');
+}
 
-	len = 0;
-	while (str[len] != '\0')
-		len++;
-	return (len);
+int	count_words(char *str)
+{
+	int	count;
+	int	i;
+
+	count = 0;
+	i = 0;
+	while (str[i])
+	{
+		while (str[i] && is_sep(str[i]))
+			i++;
+		if (str[i] && !is_sep(str[i]))
+		{
+			count++;
+			while (str[i] && !is_sep(str[i]))
+				i++;
+		}
+	}
+	return (count);
+}
+
+char	*word_dup(char *str, int start, int end)
+{
+	char	*word;
+	int		i;
+
+	word = (char *)malloc(sizeof(char) * (end - start + 1));
+	i = 0;
+	while (start < end)
+		word[i++] = str[start++];
+	word[i] = '\0';
+	return (word);
 }
 
 char	**ft_split(char *str)
@@ -27,24 +56,20 @@ char	**ft_split(char *str)
 	char	**split;
 	int		i;
 	int		j;
-	int		k;
+	int		start;
 
+	split = (char **)malloc(sizeof(char *) * (count_words(str) + 1));
 	i = 0;
 	j = 0;
-	k = 0;
-	split = (char **)malloc(sizeof(char *) * (ft_strlen(str) + 1));
-	while (str[i] != '\0')
+	while (str[i])
 	{
-		while (str[i] != ' ')
-		{
-			split[j][k] = str[i];
+		while (str[i] && is_sep(str[i]))
 			i++;
-			k++;
-		}
-		split[j][k] = '\0';
-		j++;
-		if (str[i] == ' ')
+		start = i;
+		while (str[i] && !is_sep(str[i]))
 			i++;
+		if (i > start)
+			split[j++] = word_dup(str, start, i);
 	}
 	split[j] = NULL;
 	return (split);

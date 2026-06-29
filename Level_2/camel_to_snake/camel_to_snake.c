@@ -38,7 +38,7 @@ char	*camel_to_snake(char *str)
 	int		j;
 
 	len = snake_len(str);
-	snake = (char *)malloc((len + 1) * sizeof (char *));
+	snake = (char *)malloc((len + 1) * sizeof(char));
 	i = 0;
 	j = 0;
 	while (j <= len)
@@ -60,11 +60,8 @@ char	*camel_to_snake(char *str)
 
 int	main(int argc, char **argv)
 {
-	int	len;
-
-	len = snake_len(argv[1]);
 	if (argc == 2)
-		write(1, camel_to_snake(argv[1]), len);
+		write(1, camel_to_snake(argv[1]), snake_len(argv[1]));
 	write(1, "\n", 1);
 	return (0);
 }

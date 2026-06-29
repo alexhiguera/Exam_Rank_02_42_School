@@ -34,13 +34,8 @@ int	do_op(int a, char op, int b)
 
 int	main(int argc, char **argv)
 {
-	int	a;
-	int	b;
-
-	a = atoi(argv[1]);
-	b = atoi(argv[3]);
 	if (argc == 4)
-		printf("%i", do_op(a, argv[2][0], b));
+		printf("%i", do_op(atoi(argv[1]), argv[2][0], atoi(argv[3])));
 	printf("\n");
 	return (0);
 }

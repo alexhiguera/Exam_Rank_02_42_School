@@ -12,12 +12,14 @@
 
 int	max(int *tab, unsigned int len)
 {
-	int		result;
-	int		i;
+	int				result;
+	unsigned int	i;
 
-	result = 0;
-	i = 0;
-	while (i <= len)
+	if (len == 0)
+		return (0);
+	result = tab[0];
+	i = 1;
+	while (i < len)
 	{
 		if (tab[i] > result)
 			result = tab[i];

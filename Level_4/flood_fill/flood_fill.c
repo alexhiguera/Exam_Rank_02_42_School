@@ -23,6 +23,11 @@ void	fill(char **area, t_point size, t_point vec, char to_fill)
 	fill(area, size, (t_point){vec.x, vec.y - 1}, to_fill);
 	fill(area, size, (t_point){vec.x, vec.y + 1}, to_fill);
 }
+
+void	flood_fill(char **tab, t_point size, t_point begin)
+{
+	fill(tab, size, begin, tab[begin.y][begin.x]);
+}
 /*
 char	**make_area(char **zone, t_point size)
 {

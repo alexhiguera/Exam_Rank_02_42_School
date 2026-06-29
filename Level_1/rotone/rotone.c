@@ -24,6 +24,8 @@ void	rotone(char *str)
 			c = (str[i] - 'a' + 1) % 26 + 'a';
 		else if (str[i] >= 'A' && str[i] <= 'Z')
 			c = (str[i] - 'A' + 1) % 26 + 'A';
+		else
+			c = str[i];
 		write(1, &c, 1);
 		i++;
 	}

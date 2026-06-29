@@ -18,16 +18,19 @@ void	snake_to_camel(char *str)
 	int		i;
 
 	i = 0;
-	while (str[i++] != '\0')
+	while (str[i] != '\0')
 	{
-		if (str[i] == '_')
+		if (str[i] == '_' && str[i + 1] != '\0')
 		{
-			i++;
-			c = str[i] - 32;
+			c = str[i + 1] - 32;
 			write(1, &c, 1);
+			i += 2;
 		}
 		else
+		{
 			write(1, &str[i], 1);
+			i++;
+		}
 	}
 }
 

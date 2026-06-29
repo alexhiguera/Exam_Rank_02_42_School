@@ -12,23 +12,20 @@
 
 unsigned int	lcm(unsigned int a, unsigned int b)
 {
-	unsigned int	div;
+	unsigned int	multiple;
 
 	if (a == 0 || b == 0)
 		return (0);
-	div = 2;
-	while (1)
-	{
-		if (a % div == 0 && b % div == 0)
-			return (div);
-		else if (div > a || div > b)
-			return (1);
-		div++;
-	}
+	multiple = a;
+	while (multiple % b != 0)
+		multiple += a;
+	return (multiple);
 }
 
-/* int	main(void)
+/* #include <stdio.h>
+
+int	main(void)
 {
-	("%d\n", lcm(42, 15));
+	printf("%u\n", lcm(42, 15));
 	return (0);
 } */

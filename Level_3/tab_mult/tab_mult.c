@@ -74,12 +74,9 @@ void	tab_mult(int mult)
 
 int	main(int argc, char **argv)
 {
-	int	mult;
-
 	if (argc == 2)
-	{
-		mult = ft_atoi(argv[1]);
-		tab_mult(mult);
-	}
-	return (write(1, "\n", 1));
+		tab_mult(ft_atoi(argv[1]));
+	else
+		write(1, "\n", 1);
+	return (0);
 }
